@@ -4,40 +4,62 @@ const { default: Axios } = require("axios");
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
-*/
-(function _axios_() {
-  // Axios.get('https://api.github.com/users/a')
-  Axios.get('https://swapi.dev/api/people/1')
-    .then(data => {
-      console.log('axios data received: ', data.data);
-    })
-    .catch(err => {
-      debugger;
+    */
+   (function _axios_() {
+     // Axios.get('https://api.github.com/users/a')
+     Axios.get('https://swapi.dev/api/people/1')
+     .then(data => {
+      //  console.log('axios data received: ', data.data);
+      })
+      .catch(err => {
+        debugger;
+      });
     });
-});
+    
+    function _fetch_(username) {
+      fetch(`https://api.github.com/users/${username}`)
+      // fetch('https://swapi.dev/api/people/1')
+      .then(partOfTheResponse => {
+        // fetch is sooo eager to give sth quick,
+        // it resolves some data before the body is in
+        return partOfTheResponse.json() // this operation ALSO returns a promise
+      })
+      .then(jsonStuff => {
+        // console.log('fetch json-data received: ', jsonStuff);
+        
+        // STEP 4: Pass the data received from Github into your function,
+        //         and append the returned markup to the DOM as a child of .cards
+        compMaker(jsonStuff);
+      })
+      .catch(err => {
+        debugger;
+      });
+    };
 
-(function _fetch_() {
-  fetch('https://api.github.com/users/a')
-  // fetch('https://swapi.dev/api/people/1')
-    .then(partOfTheResponse => {
-      // fetch is sooo eager to give sth quick,
-      // it resolves some data before the body is in
-      return partOfTheResponse.json() // this operation ALSO returns a promise
-    })
-    .then(jsonStuff => {
-      console.log('fetch json-data received: ', jsonStuff);
-      compMaker(jsonStuff);
-
-
-    })
-    .catch(err => {
-      debugger;
+    /*
+      STEP 5: Now that you have your own card getting added to the DOM, either
+        follow this link in your browser https://api.github.com/users/<Your github name>/followers,
+        manually find some other users' github handles, or use the list found at the
+        bottom of the page. Get at least 5 different Github usernames and add them as
+        Individual strings to the friendsArray below.
+    
+        Using that array, iterate over it, requesting data for each user, creating a new card for each
+        user, and adding that card to the DOM.
+    */
+    
+    const followersArray = [
+      'dionne-stratton',
+      'joshuaholloway',
+      'leachtucker',
+      'oliviaChen2020',
+      'rhea-manuel',
+      'simonesquad',
+      'sleepylazarus',
+      'sophiethedeveloper',
+    ];
+    followersArray.forEach((elem) => {
+      _fetch_(elem);
     });
-})();
-
-
-
-
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -46,25 +68,6 @@ const { default: Axios } = require("axios");
 
     Skip to STEP 3.
 */
-
-/*
-  STEP 4: Pass the data received from Github into your function,
-    and append the returned markup to the DOM as a child of .cards
-*/
-
-
-/*
-  STEP 5: Now that you have your own card getting added to the DOM, either
-    follow this link in your browser https://api.github.com/users/<Your github name>/followers,
-    manually find some other users' github handles, or use the list found at the
-    bottom of the page. Get at least 5 different Github usernames and add them as
-    Individual strings to the friendsArray below.
-
-    Using that array, iterate over it, requesting data for each user, creating a new card for each
-    user, and adding that card to the DOM.
-*/
-
-const followersArray = [];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -86,14 +89,6 @@ const followersArray = [];
     </div>
 */
 
-/*
-  List of LS Instructors Github username's:
-    tetondan
-    dustinmyers
-    justsml
-    luishrd
-    bigknell
-*/
 function compMaker(obj) {
   const ce = x => document.createElement(x);
   const qs = x => document.querySelector(x);
@@ -134,12 +129,9 @@ function compMaker(obj) {
     ac(p_username, 'username');
     p_username.textContent = obj.login;
 
-
     //     <p>Location: {users location}</p>
     const p_location = ce('p');
-    pr('debug:');
     p_location.textContent = `Location: ${obj.location}`;
-    pr(p_location);
 
     //     <p>Profile:
     const p_profile = ce('p');
@@ -178,8 +170,6 @@ function compMaker(obj) {
     //   </div>
     // </div>  
     
-
-
     div_card_info.appendChild(h3_name);
     div_card_info.appendChild(p_username);
     div_card_info.appendChild(p_location);
@@ -191,9 +181,5 @@ function compMaker(obj) {
     div_card.     appendChild(img);
     div_card.     appendChild(div_card_info);
     
-    pr('DIV_CARD:');
-    pr('DIV_CARD:');
-    pr('DIV_CARD:');
-    pr('DIV_CARD:');
     pr(div_card);
 };
