@@ -1,8 +1,38 @@
+const { default: Axios } = require("axios");
+
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
+(function _axios_() {
+  Axios.get('https://api.github.com/users/JoshuaHolloway')
+    .then(data => {
+      console.log('axios data received: ', data.data);
+    })
+    .catch(err => {
+      debugger;
+    });
+})();
+
+(function _fetch_() {
+  fetch('https://api.github.com/users/JoshuaHolloway')
+    .then(partOfTheResponse => {
+      // fetch is sooo eager to give sth quick,
+      // it resolves some data before the body is in
+      return partOfTheResponse.json() // this operation ALSO returns a promise
+    })
+    .then(jsonStuff => {
+      console.log('fetch json-data received: ', jsonStuff);
+    })
+    .catch(err => {
+      debugger;
+    });
+})();
+
+
+
+
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -16,6 +46,7 @@
   STEP 4: Pass the data received from Github into your function,
     and append the returned markup to the DOM as a child of .cards
 */
+
 
 /*
   STEP 5: Now that you have your own card getting added to the DOM, either
