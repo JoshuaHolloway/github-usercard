@@ -5,7 +5,7 @@ const { default: Axios } = require("axios");
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
     */
-   (function _axios_() {
+    (function _axios_() {
      // Axios.get('https://api.github.com/users/a')
      Axios.get('https://swapi.dev/api/people/1')
      .then(data => {
@@ -57,9 +57,13 @@ const { default: Axios } = require("axios");
       'sleepylazarus',
       'sophiethedeveloper',
     ];
+
+    const cards = document.querySelector('.cards');
     followersArray.forEach((elem) => {
       _fetch_(elem);
+      // cards.appendChild(document.createElement('p'));    
     });
+    console.log(cards);
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -139,8 +143,8 @@ function compMaker(obj) {
 
     //       <a href={address to users github page}>{address to users github page}</a>
     const a_tag = ce('a');
-    a_tag.setAttribute('href', obj.url);
-    a_tag.textContent = obj.url;
+    a_tag.setAttribute('href', obj.html_url);
+    a_tag.textContent = obj.html_url;
     //     </p>
 
     //     <p>Followers: {users followers count}</p>
@@ -181,5 +185,33 @@ function compMaker(obj) {
     div_card.     appendChild(img);
     div_card.     appendChild(div_card_info);
     
-    pr(div_card);
+
+    const expand_button = document.createElement('div');
+    expand_button.style.width = '100px';
+    expand_button.style.height = '100px';
+    expand_button.style.backgroundColor = 'red';
+    
+        expand_button.style.transition = '0.8s ease';
+        div_card.style.transition = '0.8s ease';
+
+    div_card.appendChild(expand_button);
+
+    let bool = false;
+    expand_button.addEventListener('click', () => {
+
+      if (bool === false) {
+        expand_button.style.height = '500px';
+        div_card.style.height = '600px';
+      } else {
+        expand_button.style.height = '100px';
+        div_card.style.height = '200px';
+      }
+      bool = !bool;
+
+
+    });
+
+    const cards = qs('.cards');
+    //pr(div_card);
+    cards.appendChild(div_card);
 };
