@@ -190,6 +190,9 @@ function compMaker(obj) {
     expand_button.style.width = '100px';
     expand_button.style.height = '100px';
     expand_button.style.backgroundColor = 'red';
+    expand_button.textContent = 'Click Me!';
+    expand_button.style.display = 'grid';
+    expand_button.style.placeItems = 'center';
     
         expand_button.style.transition = '0.8s ease';
         div_card.style.transition = '0.8s ease';
