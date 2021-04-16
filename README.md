@@ -1,5 +1,3 @@
-# (Josh)
-
 # Github User Cards
 
 In this project we are going to be accessing the GitHub API and building a social card based on the data we get back. The goal is to create a component based on the data we get when we send a GET request to the GitHub API (requesting your own data at first). The CSS and the base HTML is already done for you, you simply need to create the component function and connect the pieces.
@@ -25,7 +23,6 @@ In this project we are going to be accessing the GitHub API and building a socia
 **Follow these steps to set up and work on your project:**
 
 * [ ] Create a forked copy of this project.
-* [ ] Add your team lead as collaborator on Github.
 * [ ] Clone your OWN version of the repository (Not Lambda's by mistake!).
 * [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
 * [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly.
@@ -34,8 +31,6 @@ In this project we are going to be accessing the GitHub API and building a socia
 **Follow these steps for completing your project.**
 
 * [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
-* [ ] Add your team lead as a reviewer on the pull-request.
-* [ ] Your team lead will count the project as complete by merging the branch back into `main` branch.
 
 ### Project Setup
 
@@ -68,12 +63,6 @@ In this project we are going to be accessing the GitHub API and building a socia
 ### Part 3: Your Friends
 
 * After you have successfully added your own card to the DOM, we will get a list of your followers and programmatically add cards for them as well. Follow the instructions in GitHubCard/index.js.
-
-### Part 4: Exit Ticket 
-
-Once you begin, you will have 15 minutes to answer the questions [here](https://app.codesignal.com/public-test/J2kBzdr6YLLjXzP8N/7JLwsLBKeWdAFp).
-
-The completion of these questions is mandatory for MVP. However, passing the quiz doesn't affect your standing as a Lambda School student whatsoever. This is Lambda School testing itself! Please answer honestly and to the best of your ability without using external references.
 
 ### Stretch Goals
 
